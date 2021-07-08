@@ -1,0 +1,20 @@
+body {
+    background: rgb(145,208,65);
+    background: linear-gradient(90deg, rgba(145,208,65,0.5970763305322129) 0%, rgba(0,212,255,1) 100%);
+}
+
+.login, .register {
+    background-color: white;
+    margin-top: 8%;
+    margin-bottom: 20px;
+    text-align: center;
+    min-height: 400px;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.login .row .col-sm, .register .row .col-sm {
+    padding: 10%;
+}

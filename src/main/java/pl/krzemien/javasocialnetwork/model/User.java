@@ -21,9 +21,10 @@ public class User {
     private String firstName;
     private String lastName;
     private int age;
-    private SexTypes sex;
+    private UserSex sex;
     private String email;
     private String password;
+    private String role;
     @Column(name = "created_on")
     private LocalDateTime createdOn;
     @Column(name = "updated_on")

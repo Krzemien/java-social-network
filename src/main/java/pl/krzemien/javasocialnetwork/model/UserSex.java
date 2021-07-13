@@ -1,5 +1,5 @@
 package pl.krzemien.javasocialnetwork.model;
 
-public enum SexTypes {
+public enum UserSex {
     MALE, FEMALE
 }

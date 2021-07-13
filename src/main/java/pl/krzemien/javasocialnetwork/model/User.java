@@ -4,8 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,20 +16,48 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique = true)
+    @NotBlank
+    @Pattern(
+            regexp = "^(?=.{4,50}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$",
+            message = "zakres 4-50 znaków, znaki specjalne . i _ nie mogą być na początku, ani na końcu i nie mogą znajdować się po sobie")
     private String userName;
+
+    @NotBlank
+    @Size(min = 2, max = 50)
     private String firstName;
+
+    @NotBlank
+    @Size(min = 2, max = 50)
     private String lastName;
-    private int age;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @NotNull
+    @Past
+    private LocalDate age;
+
+    @NotNull
     private UserSex sex;
+
+    @Column(unique = true)
+    @NotBlank
+    @Email
     private String email;
+
+    @NotBlank
     private String password;
+
     private String role;
+
     @Column(name = "created_on")
     private LocalDateTime createdOn;
+
     @Column(name = "updated_on")
     private LocalDateTime updatedOn;
 
@@ -38,5 +69,22 @@ public class User {
     @PreUpdate
     public void preUpdate() {
         updatedOn = LocalDateTime.now();
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", sex=" + sex +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", createdOn=" + createdOn +
+                ", updatedOn=" + updatedOn +
+                '}';
     }
 }

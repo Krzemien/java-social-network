@@ -23,6 +23,7 @@
                             </div>
                         </div>
                     </c:if>
+
                     <c:if test="${logout}">
                         <div class="form-group">
                             <div class="alert alert-info" role="alert">
@@ -30,13 +31,15 @@
                             </div>
                         </div>
                     </c:if>
+
                     <div class="form-group">
-                        <label for="userNameInput">Nazwa użytkownika</label>
-                        <input type="text" class="form-control" name="username" id="userNameInput" aria-describedby="emailHelp" placeholder="Podaj nazwę użytkownika" autofocus>
+                        <label for="userNameInput">Adres email</label>
+                        <input type="text" class="form-control" name="username" id="userNameInput" aria-describedby="emailHelp" placeholder="Podaj swój email" autofocus>
                     </div>
+
                     <div class="form-group">
-                        <label for="passwordInput">Hasło użytkownika</label>
-                        <input type="password" class="form-control" name="password" id="passwordInput" placeholder="Podaj hasło">
+                        <label for="passwordInput">Hasło</label>
+                        <input type="password" class="form-control" name="password" id="passwordInput" placeholder="Podaj swoje hasło">
                     </div>
 
                     <button type="submit" class="btn btn-success">Zaloguj się</button>

@@ -18,3 +18,84 @@ body {
 .login .row .col-sm, .register .row .col-sm {
     padding: 10%;
 }
+
+.main {
+    margin-top: 2%;
+}
+
+.row .left {
+
+}
+
+.row .wall {
+
+}
+
+.wall .new-post {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.wall .post {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.wall .post .post-user {
+
+}
+
+.wall .post .post-content {
+    margin-top: 20px;
+}
+
+.wall .post .post-links {
+
+}
+
+.wall .post .post-add-comment {
+
+}
+
+.row .right {
+
+}
+
+.avatar {
+    /* Center the content */
+    display: inline-block;
+    vertical-align: middle;
+
+    /* Used to position the content */
+    position: relative;
+
+    /* Colors */
+    background-color: #3ED9D9;
+    color: #FFF;
+
+    /* Rounded border */
+    border-radius: 50%;
+    height: 60px;
+    /*max-height: 70px;*/
+    width: 60px;
+    /*max-width: 70px;*/
+    font-size: 28px;
+}
+
+.avatar-letters {
+    /* Center the content */
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

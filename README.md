@@ -1,3 +1,13 @@
 # java-social-network
 
-![alt text](https://github.com/Krzemien/java-social-network/blob/main/src/main/webapp/resources/images/login-page.png?raw=true)
+Login page
+
+![alt text](src/main/webapp/resources/images/login-page.png)
+
+Register page
+
+![alt text](src/main/webapp/resources/images/register-page.png)
+
+Wall page
+
+![alt text](src/main/webapp/resources/images/wall-page.png)

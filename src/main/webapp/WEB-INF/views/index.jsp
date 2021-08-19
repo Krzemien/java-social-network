@@ -10,34 +10,10 @@
 <body>
     <div class="container main">
         <div class="row">
-            <div class="col-lg-3 left">
-                <h4>${name}</h4>
-                <hr />
-
-                <section class="menu">
-                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link active" href="<c:url value="/"/>" aria-selected="true">Strona gówna</a>
-                        <a class="nav-link" href="#" aria-selected="false">Twój profil</a>
-                        <a class="nav-link" href="#" aria-selected="false">Ustawienia</a>
-                        <form action="<c:url value="/logout"/>" method="post" class="nav-link">
-                            <div class="btn-group btn-group-sm" role="group" aria-label="First group">
-                                <button type="submit" class="btn btn-primary">Wyloguj</button>
-                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                            </div>
-                        </form>
-                    </div>
-                </section>
-            </div>
+            <%@ include file = "menu.jsp" %>
 
             <div class="col-lg-6 wall">
-                <section class="search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Kogo chcesz wyszukać?">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">szukaj</button>
-                        </div>
-                    </div>
-                </section>
+                <%@ include file = "search.jsp" %>
 
                 <section class="new-post">
                     <form:form method="post" modelAttribute="post" action="/post">
@@ -68,7 +44,7 @@
                             <div class="col-sm-10">
                                 <div class="name">${post.user.firstName} ${post.user.lastName}</div>
                                 <div class="nick">
-                                    <a href="#">
+                                    <a href="<c:url value="/user/${post.user.userName}"/>">
                                         @${post.user.userName}
                                     </a>
                                 </div>
@@ -139,26 +115,8 @@
 
             </div>
 
-            <div class="col-lg-3 right">
-                <h4>Powiadomienia</h4><hr />
+            <%@ include file = "notifications.jsp" %>
 
-                <section class="notification">
-                    <div class="alert alert-info" role="alert">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, tempore!
-                    </div>
-                </section>
-                <section class="notification">
-                    <div class="alert alert-info" role="alert">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, tempore!
-                    </div>
-                </section>
-
-                <section class="more-notonotifications">
-                    <div>
-                        <a href="#" class="btn btn-primary">więcej powiadomień</a>
-                    </div>
-                </section>
-            </div>
         </div>
     </div>
 

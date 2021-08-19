@@ -40,7 +40,7 @@
                 </section>
 
                 <section class="new-post">
-                    <form:form method="post" modelAttribute="post">
+                    <form:form method="post" modelAttribute="post" action="/post">
                         <div class="form-group">
                             <label for="new-post">Dodaj nowy post</label>
                             <form:textarea path="content" class="form-control" id="new-post" rows="4"></form:textarea>

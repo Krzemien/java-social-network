@@ -22,7 +22,7 @@ public class PostController {
         this.postService = postService;
     }
 
-    @PostMapping("/")
+    @PostMapping("/post")
     public String postValid(Principal principal, @Valid Post post, BindingResult result, Model model){
         User user = userService.getUserByEmail(principal.getName());
 

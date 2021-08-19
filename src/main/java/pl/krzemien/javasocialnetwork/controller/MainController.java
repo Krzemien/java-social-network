@@ -29,12 +29,7 @@ public class MainController {
     @GetMapping(value = {"/", "/home"} )
     public String home(Principal principal, Model model){
         User user = userService.getUserByEmail(principal.getName());
-        model.addAttribute("name",
-                String.format("%s %s",
-                        user.getFirstName(),
-                        user.getLastName()
-                )
-        );
+        model.addAttribute("userData", user);
 
         model.addAttribute("post", new Post());
 

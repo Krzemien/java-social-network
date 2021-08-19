@@ -27,12 +27,6 @@ public class PostController {
         User user = userService.getUserByEmail(principal.getName());
 
         if (result.hasErrors()){
-            model.addAttribute("name",
-                    String.format("%s %s",
-                            user.getFirstName(),
-                            user.getLastName()
-                    )
-            );
             model.addAttribute("posts", postService.getAllPosts());
 
             return "index";

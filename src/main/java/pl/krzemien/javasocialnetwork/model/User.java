@@ -10,6 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -54,6 +55,12 @@ public class User {
     private String password;
 
     private String role;
+
+    @ManyToMany //wielu userow moze obserwowac wielu userow
+    private List<User> following; //userzy obserwowani przez usera
+
+    @ManyToMany //wielu userow obserwowanych jest przez wielu userow
+    private List<User> followers; //userzy obserwujacy usera
 
     @Column(name = "created_on")
     private LocalDateTime createdOn;

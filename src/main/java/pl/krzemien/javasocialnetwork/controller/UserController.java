@@ -27,6 +27,11 @@ public class UserController {
             model.addAttribute("userExist", false);
         }
 
+        User user = userService.getUserByUserName(username);
+
+        model.addAttribute("followers", userService.getFollowers(user).size());
+        model.addAttribute("following", userService.getFollowing(user).size());
+
         return "profile";
     }
 
@@ -36,5 +41,37 @@ public class UserController {
         model.addAttribute("userData", user);
 
         return "settings";
+    }
+
+    @GetMapping("/user/{username}/following")
+    public String userFollowing(@PathVariable String username, Model model){
+        if(userService.isUserNameExists(username)){
+            User user = userService.getUserByUserName(username);
+            model.addAttribute("userData", user);
+            model.addAttribute("userExist", true);
+        } else {
+            model.addAttribute("userExist", false);
+        }
+
+        User user = userService.getUserByUserName(username);
+        model.addAttribute("following", userService.getFollowing(user));
+
+        return "following";
+    }
+
+    @GetMapping("/user/{username}/followers")
+    public String userFollowers(@PathVariable String username, Model model){
+        if(userService.isUserNameExists(username)){
+            User user = userService.getUserByUserName(username);
+            model.addAttribute("userData", user);
+            model.addAttribute("userExist", true);
+        } else {
+            model.addAttribute("userExist", false);
+        }
+
+        User user = userService.getUserByUserName(username);
+        model.addAttribute("followers", userService.getFollowers(user));
+
+        return "followers";
     }
 }

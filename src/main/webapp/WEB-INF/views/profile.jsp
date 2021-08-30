@@ -18,12 +18,13 @@
                 <c:if test="${userExist==true}">
                     <section class="">
                         <h1>Profil</h1>
-                        <h2>${userData.userName}</h2>
-                        <h2><a href="<c:url value="/user/${userData.userName}/following"/>">Obserwowani ${following}</a></h2>
-                        <h2><a href="<c:url value="/user/${userData.userName}/followers"/>">Obserwujących ${followers}</a></h2>
-                        <h2>${userData.firstName}</h2>
-                        <h2>${userData.lastName}</h2>
-                        <h2>${userData.email}</h2>
+                        <h2>${userData2.id}</h2>
+                        <h2>${userData2.userName}</h2>
+                        <h2><a href="<c:url value="/user/${userData2.userName}/following"/>">Obserwowani ${following}</a></h2>
+                        <h2><a href="<c:url value="/user/${userData2.userName}/followers"/>">Obserwujących ${followers}</a></h2>
+                        <h2>${userData2.firstName}</h2>
+                        <h2>${userData2.lastName}</h2>
+                        <h2>${userData2.email}</h2>
                     </section>
                 </c:if>
 

@@ -17,10 +17,12 @@
 
             <c:if test="${userExist==true}">
                 <section class="">
-                    <h1>Lista osób, które obserwują użytkownika ${userData.userName}</h1>
+                    <h1>Lista osób, które obserwują użytkownika ${userData2.userName}</h1>
 
                     <c:forEach var="followers" items="${followers}">
-                        <p>${followers.userName}</p>
+                        <a href="<c:url value="/user/${followers.userName}"/>">
+                            <p>${followers.userName}</p>
+                        </a>
                     </c:forEach>
                 </section>
             </c:if>

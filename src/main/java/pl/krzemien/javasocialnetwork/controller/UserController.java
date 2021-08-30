@@ -18,19 +18,21 @@ public class UserController {
     }
 
     @GetMapping("/user/{username}")
-    public String userProfile(@PathVariable String username, Model model){
+    public String userProfile(Principal principal, @PathVariable String username, Model model){
+        User user = userService.getUserByEmail(principal.getName());
+        model.addAttribute("userData", user);
+
         if(userService.isUserNameExists(username)){
-            User user = userService.getUserByUserName(username);
-            model.addAttribute("userData", user);
             model.addAttribute("userExist", true);
+
+            User user2 = userService.getUserByUserName(username);
+            model.addAttribute("userData2", user2);
+
+            model.addAttribute("followers", userService.getFollowers(user2).size());
+            model.addAttribute("following", userService.getFollowing(user2).size());
         } else {
             model.addAttribute("userExist", false);
         }
-
-        User user = userService.getUserByUserName(username);
-
-        model.addAttribute("followers", userService.getFollowers(user).size());
-        model.addAttribute("following", userService.getFollowing(user).size());
 
         return "profile";
     }
@@ -44,33 +46,38 @@ public class UserController {
     }
 
     @GetMapping("/user/{username}/following")
-    public String userFollowing(@PathVariable String username, Model model){
+    public String userFollowing(Principal principal, @PathVariable String username, Model model){
+        User user = userService.getUserByEmail(principal.getName());
+        model.addAttribute("userData", user);
+
         if(userService.isUserNameExists(username)){
-            User user = userService.getUserByUserName(username);
-            model.addAttribute("userData", user);
             model.addAttribute("userExist", true);
+
+            User user2 = userService.getUserByUserName(username);
+            model.addAttribute("userData2", user2);
+
+            model.addAttribute("following", userService.getFollowing(user2));
         } else {
             model.addAttribute("userExist", false);
         }
-
-        User user = userService.getUserByUserName(username);
-        model.addAttribute("following", userService.getFollowing(user));
 
         return "following";
     }
 
     @GetMapping("/user/{username}/followers")
-    public String userFollowers(@PathVariable String username, Model model){
+    public String userFollowers(Principal principal, @PathVariable String username, Model model){
+        User user = userService.getUserByEmail(principal.getName());
+        model.addAttribute("userData", user);
+
         if(userService.isUserNameExists(username)){
-            User user = userService.getUserByUserName(username);
-            model.addAttribute("userData", user);
             model.addAttribute("userExist", true);
+
+            User user2 = userService.getUserByUserName(username);
+            model.addAttribute("userData2", user2);
+            model.addAttribute("followers", userService.getFollowers(user2));
         } else {
             model.addAttribute("userExist", false);
         }
-
-        User user = userService.getUserByUserName(username);
-        model.addAttribute("followers", userService.getFollowers(user));
 
         return "followers";
     }
